@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Industrial color scheme - Tailwind v4 theme configuration */
+@theme {
+  /* Custom colors for industrial design */
+  --color-black: #000000;
+  --color-dark-gray: #1A1A1A;
+  --color-warning-yellow: #FFCC00;
+  --color-white: #FFFFFF;
+  
+  /* Font configuration */
+  --font-sans: "Play", var(--font-play), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Audiowide", var(--font-audiowide), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles for industrial, heavy-duty design */
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: "Play", var(--font-play), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Heading styles with Audiowide */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Audiowide", var(--font-audiowide), sans-serif;
+  font-weight: 400;
+}
+
+/* Utility class for Audiowide font */
+.font-heading {
+  font-family: "Audiowide", var(--font-audiowide), sans-serif;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default link styles */
+a {
+  text-decoration: none;
+}
+
+/* Industrial button base styles */
+button {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-warning-yellow);
+  outline-offset: 2px;
+}
+
+/* Continuous rotation animation for cog on hover */
+@keyframes spin-continuous {
+  from {
+    transform: rotate(var(--cog-rotation, 0deg));
+  }
+  to {
+    transform: rotate(calc(var(--cog-rotation, 0deg) + 360deg));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.cog-hover-spin:hover {
+  animation: spin-continuous 2s linear infinite !important;
+}
+
+/* Scroll reveal animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  --scroll-delay: 0s;
+  /* Scroll reveal transitions with delay */
+  transition: opacity 0.8s ease-out var(--scroll-delay), 
+              transform 0.8s ease-out var(--scroll-delay);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  /* Reset delay after scroll reveal completes */
+  --scroll-delay: 0s;
+  /* Allow all transitions for hover effects after reveal */
+  transition: all 0.5s ease-in-out !important;
+}
+
+/* Ensure hover transitions work without delay after scroll reveal */
+.scroll-reveal.visible:hover {
+  transition: all 0.5s ease-in-out !important;
+  transition-delay: 0s !important;
+}
+
+.scroll-reveal.visible * {
+  transition-delay: 0s !important;
+}
+
+.scroll-reveal-delay-1 {
+  transition-delay: 0.3s;
+}
+
+.scroll-reveal-delay-2 {
+  transition-delay: 0.4s;
+}
+
+.scroll-reveal-delay-3 {
+  transition-delay: 0.5s;
+}
+
+.scroll-reveal-delay-4 {
+  transition-delay: 0.6s;
+}
+
+.scroll-reveal-delay-5 {
+  transition-delay: 0.7s;
+}
+
+.scroll-reveal-delay-6 {
+  transition-delay: 0.8s;
 }
