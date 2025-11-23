@@ -134,3 +134,15 @@ button {
 .scroll-reveal-delay-6 {
   transition-delay: 0.8s;
 }
+
+/* Star field twinkling animation */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

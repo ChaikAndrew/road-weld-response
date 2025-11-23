@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { useInView } from "@/hooks/useInView";
+import StarField from "@/components/StarField";
 
 /**
  * ContactForm Component
@@ -117,8 +118,9 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="w-full bg-black py-20 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="contact" className="relative w-full bg-black py-20 lg:py-32 overflow-hidden">
+      <StarField />
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <div 

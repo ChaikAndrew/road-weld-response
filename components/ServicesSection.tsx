@@ -10,6 +10,7 @@ import {
   AlertCircle 
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import StarField from "@/components/StarField";
 
 /**
  * ServicesSection Component
@@ -67,8 +68,9 @@ export default function ServicesSection() {
   const { ref: gridRef, isInView: gridInView } = useInView();
 
   return (
-    <section id="services" className="w-full bg-black py-20 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="services" className="relative w-full bg-black py-20 lg:py-32 overflow-hidden">
+      <StarField />
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
         <div 
           ref={headerRef}

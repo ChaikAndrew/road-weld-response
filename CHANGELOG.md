@@ -23,7 +23,15 @@
 - **Privacy Policy Page**: Added `/privacy` page with comprehensive privacy policy
 - **Quick Links**: Added Privacy Policy link to footer navigation
 
+### Visual Effects
+- **Starfield Background**: Added animated starry sky to "Our Services" and "Contact Us" sections
+  - 150 randomly generated stars with twinkling animation
+  - Interactive hover effect with zoom (2x scale)
+  - Subtle glow effect for each star
+  - Random animation delays and durations for natural effect
+
 ### Technical
 - Updated image handling in HeroSection (removed query strings for Next.js compatibility)
 - Improved responsive design for floating buttons
+- Added StarField component with CSS animations
 
