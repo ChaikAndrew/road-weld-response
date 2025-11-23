@@ -187,7 +187,7 @@ export default function ContactForm() {
                 className={`w-full px-4 py-3 bg-black border ${
                   errors.phone ? "border-red-500" : "border-white/20"
                 } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
-                placeholder="+0 (000) 000-0000"
+                placeholder="+1 (585) 315-7599"
               />
               {errors.phone && (
                 <p className="mt-1 text-sm text-red-400">{errors.phone}</p>
@@ -245,7 +245,7 @@ export default function ContactForm() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-yellow-400 transition-colors duration-500 ease-in-out"
+              className="w-full bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-red-500 transition-colors duration-500 ease-in-out"
             >
               Send Message
             </button>

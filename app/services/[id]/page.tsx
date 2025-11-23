@@ -208,7 +208,7 @@ export default function ServiceDetailPage({
           </h1>
           <Link
             href="/#services"
-            className="text-warning-yellow hover:text-yellow-400 transition-colors"
+            className="text-warning-yellow hover:text-red-500 transition-colors"
           >
             Return to Services
           </Link>
@@ -307,7 +307,7 @@ export default function ServiceDetailPage({
               </p>
               <Link
                 href="/#contact"
-                className="inline-block bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-yellow-400 transition-colors"
+                className="inline-block bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-red-500 transition-colors"
               >
                 Contact Us
               </Link>

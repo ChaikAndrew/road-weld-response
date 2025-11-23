@@ -29,6 +29,21 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Email Configuration
+
+To enable contact form email notifications:
+
+1. Create a `.env.local` file in the root directory
+2. Get your Resend API key from [https://resend.com/api-keys](https://resend.com/api-keys)
+3. Add the following variables:
+
+```env
+RESEND_API_KEY=re_your_api_key_here
+CONTACT_EMAIL=labidallc@gmail.com
+```
+
+4. For production, update the `from` email in `app/api/contact/route.ts` to use your verified domain
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

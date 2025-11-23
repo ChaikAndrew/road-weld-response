@@ -85,8 +85,8 @@ export default function Header() {
           {/* Call Now Button - Desktop */}
           <div className="hidden lg:block">
             <a
-              href="tel:+1234567890"
-              className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide hover:bg-yellow-400 transition-colors duration-500 ease-in-out"
+              href="tel:+15853157599"
+              className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide hover:bg-red-500 transition-colors duration-500 ease-in-out"
             >
               Call Now
             </a>
@@ -150,8 +150,8 @@ export default function Header() {
                 Contact
               </Link>
               <a
-                href="tel:+1234567890"
-                className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide text-center hover:bg-yellow-400 transition-colors duration-500 ease-in-out"
+                href="tel:+15853157599"
+                className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide text-center hover:bg-red-500 transition-colors duration-500 ease-in-out"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Call Now

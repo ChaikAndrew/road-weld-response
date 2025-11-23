@@ -9,11 +9,9 @@ import Image from "next/image";
  */
 
 const images = [
-"/pictures/pic1.jpg" 
-,
-"/pictures/pic2.jpg"  
-,
-"/pictures/pic3.jpg" 
+  "/pictures/pic1.jpg",
+  "/pictures/pic2.jpg",
+  "/pictures/pic3.jpg",
 ];
 
 export default function HeroSection() {
@@ -49,6 +47,7 @@ export default function HeroSection() {
               priority={index === 0}
               quality={90}
               sizes="100vw"
+              unoptimized
             />
             {/* Dark overlay for consistent styling */}
             <div className="absolute inset-0 bg-black/70" />
@@ -61,7 +60,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white uppercase tracking-tight mb-4 md:mb-6 leading-tight">
-            Mobile Roadside Welding & Heavy Equipment Assistance
+            24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication
           </h1>
 
           {/* Subtext */}
@@ -72,8 +71,8 @@ export default function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="tel:+1234567890"
-              className="bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-yellow-400 transition-colors duration-500 ease-in-out w-full sm:w-auto"
+              href="tel:+15853157599"
+              className="bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-red-500 transition-colors duration-500 ease-in-out w-full sm:w-auto"
             >
               Call Now
             </a>

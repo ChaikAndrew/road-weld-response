@@ -22,8 +22,8 @@ const benefits: Benefit[] = [
     description: "Specialized knowledge in commercial trucks, construction equipment, and industrial machinery.",
   },
   {
-    title: "Certified Welders",
-    description: "All technicians are certified welders with extensive experience in structural and mobile welding.",
+    title: "Qualified Welders",
+    description: "All technicians are qualified welders with extensive experience in structural and mobile welding.",
   },
   {
     title: "Fully Equipped Mobile Units",
@@ -35,7 +35,7 @@ const benefits: Benefit[] = [
   },
   {
     title: "B2B Focused",
-    description: "We understand fleet operations and work with businesses to minimize operational disruptions.",
+    description: "We deliver reliable, industry-grade services for commercial and industrial partners",
   },
 ];
 
