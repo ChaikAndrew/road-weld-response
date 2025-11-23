@@ -136,7 +136,7 @@ export default function Footer() {
                 />
               </svg>
             </a>
-            <span className="text-white/60 text-xs">(dev only 🛡️ - remove in production)</span>
+            <span className="text-white/60 text-xs">(dev onlyе 🛡️ - remove in production)</span>
           </p>
         </div>
       </div>
