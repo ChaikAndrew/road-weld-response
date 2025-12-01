@@ -36,6 +36,8 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Validation functions
   const validateName = (name: string): string | undefined => {
@@ -91,8 +93,9 @@ export default function ContactForm() {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
 
     // Validate all fields
     const newErrors: FormErrors = {};
@@ -105,15 +108,40 @@ export default function ContactForm() {
 
     // Check if there are any errors
     if (Object.values(newErrors).every((error) => !error)) {
-      // Form is valid - in a real app, this would submit to a backend
-      console.log("Form submitted:", formData);
-      setIsSubmitted(true);
+      setIsLoading(true);
       
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to send message');
+        }
+
+        setIsSubmitted(true);
         setFormData({ name: "", phone: "", email: "", message: "" });
-      }, 3000);
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } catch (error) {
+        console.error('Form submission error:', error);
+        setSubmitError(
+          error instanceof Error 
+            ? error.message 
+            : 'An error occurred. Please try again later.'
+        );
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -145,6 +173,13 @@ export default function ContactForm() {
             {isSubmitted && (
               <div className="mb-6 p-4 bg-warning-yellow/20 border border-warning-yellow text-warning-yellow">
                 Thank you! Your message has been received. We'll contact you soon.
+              </div>
+            )}
+
+            {/* Error Message */}
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-500/20 border border-red-500 text-red-400">
+                {submitError}
               </div>
             )}
 
@@ -247,9 +282,10 @@ export default function ContactForm() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out"
+              disabled={isLoading}
+              className="w-full bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isLoading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>
