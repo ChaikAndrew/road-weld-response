@@ -15,7 +15,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-white font-black uppercase tracking-tight mb-4 text-xl">
-              Road Weld Response
+              LLC Labida
             </h3>
             <p className="text-white/70 leading-relaxed">
               Mobile welding and heavy-equipment roadside service providing on-site repairs, fabrication, and emergency support for trucks, trailers, and other equipment. Delivering dependable metal fabrication and emergency fixes when and where you need them.
@@ -110,7 +110,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="text-white/50 text-sm">
-            © {currentYear} Road Weld Response. All rights reserved. 
+            © {currentYear} LLC Labida. All rights reserved. 
            
           </p> 
          

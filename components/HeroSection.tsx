@@ -65,14 +65,14 @@ export default function HeroSection() {
 
           {/* Subtext */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 md:mb-10 max-w-3xl mx-auto font-semibold leading-relaxed">
-            Fast response, certified welders, 24/7 emergency service. When heavy equipment breaks down, we bring the solution to you.
+            Fast response, qualified welders, 24/7 emergency service. When heavy equipment breaks down, we bring the solution to you.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="tel:+15853157599"
-              className="bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-red-500 transition-colors duration-500 ease-in-out w-full sm:w-auto"
+              className="bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out w-full sm:w-auto"
             >
               Call Now
             </a>

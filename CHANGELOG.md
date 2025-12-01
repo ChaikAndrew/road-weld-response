@@ -2,6 +2,11 @@
 
 ## Recent Updates
 
+### Latest Changes
+- **Call Button**: Increased size for mobile, changed to yellow background, added subtle pulse animation (every 10s)
+- **Mobile Scrolling**: Added bottom padding on mobile to allow scrolling below footer
+- **Text Updates**: Replaced "certified welders" with "qualified welders" across all pages
+
 ### Design & Styling
 - **Color Scheme**: Changed all yellow accent colors to red (#DC2626) throughout the site
 - **Floating Buttons**: Added floating call button (left) and scroll-to-top button (right)

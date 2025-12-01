@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 /**
  * Home Page
- * Main landing page for Road Weld Response
+ * Main landing page for LLC Labida
  * Combines all sections: Header, Hero, Services, Why Us, Contact, Footer
  */
 export default function Home() {

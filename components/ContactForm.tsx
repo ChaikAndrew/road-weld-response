@@ -163,12 +163,12 @@ export default function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 bg-black border ${
-                  errors.name ? "border-red-500" : "border-white/20"
+                  errors.name ? "border-warning-yellow" : "border-white/20"
                 } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
                 placeholder="Your full name"
               />
               {errors.name && (
-                <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                <p className="mt-1 text-sm text-warning-yellow">{errors.name}</p>
               )}
             </div>
 
@@ -187,12 +187,12 @@ export default function ContactForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 bg-black border ${
-                  errors.phone ? "border-red-500" : "border-white/20"
+                  errors.phone ? "border-warning-yellow" : "border-white/20"
                 } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
                 placeholder="+1 (585) 315-7599"
               />
               {errors.phone && (
-                <p className="mt-1 text-sm text-red-400">{errors.phone}</p>
+                <p className="mt-1 text-sm text-warning-yellow">{errors.phone}</p>
               )}
             </div>
 
@@ -211,12 +211,12 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 bg-black border ${
-                  errors.email ? "border-red-500" : "border-white/20"
+                  errors.email ? "border-warning-yellow" : "border-white/20"
                 } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
                 placeholder="your.email@example.com"
               />
               {errors.email && (
-                <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                <p className="mt-1 text-sm text-warning-yellow">{errors.email}</p>
               )}
             </div>
 
@@ -235,19 +235,19 @@ export default function ContactForm() {
                 onChange={handleChange}
                 rows={6}
                 className={`w-full px-4 py-3 bg-black border ${
-                  errors.message ? "border-red-500" : "border-white/20"
+                  errors.message ? "border-warning-yellow" : "border-white/20"
                 } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out resize-none`}
                 placeholder="Describe your service needs..."
               />
               {errors.message && (
-                <p className="mt-1 text-sm text-red-400">{errors.message}</p>
+                <p className="mt-1 text-sm text-warning-yellow">{errors.message}</p>
               )}
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-red-500 transition-colors duration-500 ease-in-out"
+              className="w-full bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out"
             >
               Send Message
             </button>

@@ -46,9 +46,9 @@ export default function Header() {
                 }}
               />
               <div className="text-white">
-                <span className="text-2xl font-black tracking-tight">RWR</span>
+                <span className="text-2xl font-black tracking-tight">LLC</span>
                 <span className="block text-xs font-semibold text-warning-yellow uppercase tracking-wider">
-                  Road Weld Response
+                  Labida
                 </span>
               </div>
             </Link>
@@ -86,7 +86,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <a
               href="tel:+15853157599"
-              className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide hover:bg-red-500 transition-colors duration-500 ease-in-out"
+              className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out"
             >
               Call Now
             </a>
@@ -151,7 +151,7 @@ export default function Header() {
               </Link>
               <a
                 href="tel:+15853157599"
-                className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide text-center hover:bg-red-500 transition-colors duration-500 ease-in-out"
+                className="bg-warning-yellow text-black px-6 py-3 font-bold uppercase tracking-wide text-center hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Call Now

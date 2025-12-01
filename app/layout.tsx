@@ -18,20 +18,20 @@ const play = Play({
 });
 
 export const metadata: Metadata = {
-  title: "Road Weld Response | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
-  description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, certified welders, 24/7 emergency service. Expert heavy-duty truck repair and fleet services.",
+  title: "LLC Labida | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
+  description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, qualified welders, 24/7 emergency service. Expert heavy-duty truck repair and fleet services.",
   keywords: "roadside welding, mobile welding, heavy equipment repair, truck repair, emergency roadside assistance, fleet services, welding services",
-  authors: [{ name: "Road Weld Response" }],
+  authors: [{ name: "LLC Labida" }],
   openGraph: {
-    title: "Road Weld Response | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
-    description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, certified welders, 24/7 emergency service.",
+    title: "LLC Labida | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
+    description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, qualified welders, 24/7 emergency service.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Road Weld Response | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
-    description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, certified welders, 24/7 emergency service.",
+    title: "LLC Labida | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
+    description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, qualified welders, 24/7 emergency service.",
   },
   robots: {
     index: true,

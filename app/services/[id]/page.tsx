@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Phone, Mail, MapPin } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -20,11 +20,11 @@ const serviceDetails: Record<string, ServiceDetail> = {
     title: "Emergency Roadside Welding",
     icon: "Wrench",
     shortDescription: "24/7 mobile welding services for broken frames, cracked components, and structural repairs on-site.",
-    fullDescription: "When equipment breaks down on the road, every minute counts. Our emergency roadside welding service provides immediate, professional mobile welding solutions to get you back on the road fast. Our certified welders arrive fully equipped with mobile welding units capable of handling everything from minor frame cracks to major structural repairs.",
+    fullDescription: "When equipment breaks down on the road, every minute counts. Our emergency roadside welding service provides immediate, professional mobile welding solutions to get you back on the road fast. Our qualified welders arrive fully equipped with mobile welding units capable of handling everything from minor frame cracks to major structural repairs.",
     features: [
       "24/7 emergency response",
       "Mobile welding units fully equipped",
-      "Certified AWS welders",
+      "Qualified AWS welders",
       "On-site structural repairs",
       "Frame and component welding",
       "Multiple welding processes (MIG, TIG, Stick)",
@@ -71,35 +71,6 @@ const serviceDetails: Record<string, ServiceDetail> = {
       "Construction equipment failures",
       "Commercial fleet repairs",
       "Specialized vehicle service",
-    ],
-  },
-  "fast-response-service": {
-    id: "fast-response-service",
-    title: "Fast Response Service",
-    icon: "Zap",
-    shortDescription: "Rapid deployment to your location with fully equipped mobile repair units and certified technicians.",
-    fullDescription: "Time is money in the transportation and construction industries. Our fast response service ensures rapid deployment of fully equipped mobile repair units to your exact location. Our certified technicians arrive ready to diagnose and repair issues immediately, minimizing your downtime and getting you back to work faster.",
-    features: [
-      "Rapid response times",
-      "GPS-tracked mobile units",
-      "Fully equipped service vehicles",
-      "Certified technicians",
-      "On-site diagnostics",
-      "Immediate repair capabilities",
-    ],
-    benefits: [
-      "Minimal wait times",
-      "Faster return to operations",
-      "Reduced revenue loss",
-      "Professional on-site service",
-      "No transportation delays",
-    ],
-    useCases: [
-      "Urgent breakdowns",
-      "Time-sensitive repairs",
-      "Emergency service calls",
-      "Critical equipment failures",
-      "Fleet maintenance needs",
     ],
   },
   "fleet-maintenance": {
@@ -202,17 +173,99 @@ export default function ServiceDetailPage({
     return (
       <main className="min-h-screen bg-black">
         <Header />
-        <div className="container mx-auto px-4 lg:px-8 py-32 text-center">
-          <h1 className="text-4xl font-black text-white uppercase mb-4">
-            Service Not Found
-          </h1>
-          <Link
-            href="/#services"
-            className="text-warning-yellow hover:text-red-500 transition-colors"
-          >
-            Return to Services
-          </Link>
-        </div>
+        <section className="w-full bg-black py-20 lg:py-32">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              {/* Back Button */}
+              <Link
+                href="/#services"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-warning-yellow transition-colors mb-8"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span>Back to Services</span>
+              </Link>
+
+              {/* Contact Information Card */}
+              <div className="bg-dark-gray border border-white/10 p-8 lg:p-12">
+                <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-8 text-center">
+                  Contact Us
+                </h2>
+                
+                <div className="space-y-6 mb-8">
+                  {/* Phone */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-warning-yellow flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-black" strokeWidth={2} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">
+                        Phone
+                      </h3>
+                      <a
+                        href="tel:+15853157599"
+                        className="text-xl text-warning-yellow hover:text-warning-yellow/80 transition-colors font-semibold"
+                      >
+                        +1 (585) 315-7599
+                      </a>
+                      <p className="text-white/70 mt-1">Available 24/7 for emergency service</p>
+                    </div>
+                  </div>
+
+                  {/* Email */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-warning-yellow flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-black" strokeWidth={2} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">
+                        Email
+                      </h3>
+                      <a
+                        href="mailto:labidallc@gmail.com"
+                        className="text-xl text-warning-yellow hover:text-warning-yellow/80 transition-colors font-semibold"
+                      >
+                        labidallc@gmail.com
+                      </a>
+                      <p className="text-white/70 mt-1">Send us a message anytime</p>
+                    </div>
+                  </div>
+
+                  {/* Location */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-warning-yellow flex items-center justify-center">
+                      <MapPin className="w-6 h-6 text-black" strokeWidth={2} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">
+                        Location
+                      </h3>
+                      <p className="text-xl text-white font-semibold">
+                        Rochester, NY
+                      </p>
+                      <p className="text-white/70 mt-1">By appointment only</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="tel:+15853157599"
+                    className="bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out text-center"
+                  >
+                    Call Now
+                  </a>
+                  <Link
+                    href="/#contact"
+                    className="bg-transparent border-2 border-warning-yellow text-warning-yellow px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow hover:text-black transition-colors duration-500 ease-in-out text-center"
+                  >
+                    Contact Form
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <Footer />
       </main>
     );
@@ -307,7 +360,7 @@ export default function ServiceDetailPage({
               </p>
               <Link
                 href="/#contact"
-                className="inline-block bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-red-500 transition-colors"
+                className="inline-block bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors"
               >
                 Contact Us
               </Link>

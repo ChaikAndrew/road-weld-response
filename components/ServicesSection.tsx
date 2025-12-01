@@ -4,7 +4,6 @@ import Link from "next/link";
 import { 
   Wrench, 
   Truck, 
-  Zap, 
   Settings, 
   Nut, 
   AlertCircle 
@@ -36,12 +35,6 @@ const services: Service[] = [
     icon: Truck,
     title: "Heavy Equipment Repair",
     description: "Expert repair services for trucks, trailers, construction equipment, and commercial vehicles.",
-  },
-  {
-    id: "fast-response-service",
-    icon: Zap,
-    title: "Fast Response Service",
-    description: "Rapid deployment to your location with fully equipped mobile repair units and certified technicians.",
   },
   {
     id: "fleet-maintenance",

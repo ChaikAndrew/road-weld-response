@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
                     1. Introduction
                   </h2>
                   <p>
-                    Road Weld Response ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our mobile roadside welding and heavy equipment services.
+                    LLC Labida ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our mobile roadside welding and heavy equipment services.
                   </p>
                 </section>
 
