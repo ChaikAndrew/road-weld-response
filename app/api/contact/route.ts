@@ -16,17 +16,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Recipient emails (2 emails)
-    const recipientEmail1 =
-      process.env.CONTACT_EMAIL || 'andreychaika87@gmail.com';
-
-    const recipientEmail2 =
-      process.env.CONTACT_EMAIL_SECOND || 'labidallc@gmail.com';
-
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-      to: [recipientEmail1, recipientEmail2], // <-- дві адреси
+      to: 'andreychaika87@gmail.com',
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
