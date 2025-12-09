@@ -9,13 +9,13 @@ const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black border-t border-white/10 py-12 lg:py-16">
+    <footer className="w-full bg-black border-t border-white/10 py-12 lg:py-16 pb-24 md:pb-24 lg:pb-16">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
             <h3 className="text-white font-black uppercase tracking-tight mb-4 text-xl">
-              LLC Labida
+              Labida LLC
             </h3>
             <p className="text-white/70 leading-relaxed">
               Mobile welding and heavy-equipment roadside service providing on-site repairs, fabrication, and emergency support for trucks, trailers, and other equipment. Delivering dependable metal fabrication and emergency fixes when and where you need them.
@@ -110,7 +110,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="text-white/50 text-sm">
-            © {currentYear} LLC Labida. All rights reserved. 
+            © {currentYear} Labida LLC. All rights reserved. 
            
           </p> 
          

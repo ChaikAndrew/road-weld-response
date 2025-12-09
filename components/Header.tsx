@@ -46,9 +46,9 @@ export default function Header() {
                 }}
               />
               <div className="text-white">
-                <span className="text-2xl font-black tracking-tight">LLC</span>
-                <span className="block text-xs font-semibold text-warning-yellow uppercase tracking-wider">
-                  Labida
+                <span className="font-black tracking-tight">
+                  <span className="text-2xl font-semibold text-warning-yellow uppercase tracking-wider">Labida </span>
+                  <span className="text-lg">LLC</span>
                 </span>
               </div>
             </Link>

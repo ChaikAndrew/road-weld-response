@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 /**
  * Home Page
- * Main landing page for LLC Labida
+ * Main landing page for Labida LLC
  * Combines all sections: Header, Hero, Services, Why Us, Contact, Footer
  */
 export default function Home() {
