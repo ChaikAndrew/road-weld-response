@@ -22,6 +22,16 @@ export const metadata: Metadata = {
   description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, qualified welders, 24/7 emergency service. Expert heavy-duty truck repair and fleet services.",
   keywords: "roadside welding, mobile welding, heavy equipment repair, truck repair, emergency roadside assistance, fleet services, welding services",
   authors: [{ name: "Labida LLC" }],
+  icons: {
+    icon: [
+      { url: "/redketchup/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/redketchup/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/redketchup/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/redketchup/site.webmanifest",
   openGraph: {
     title: "Labida LLC | 24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication",
     description: "24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication. Fast response, qualified welders, 24/7 emergency service.",
