@@ -17,12 +17,12 @@ export default function Footer() {
             <h3 className="text-white font-black uppercase tracking-tight mb-4 text-xl">
               Labida LLC
             </h3>
-            <p className="text-white/70 leading-relaxed">
-              Mobile welding and heavy-equipment roadside service providing on-site repairs, fabrication, and emergency support for trucks, trailers, and other equipment. Delivering dependable metal fabrication and emergency fixes when and where you need them.
+            <p className="text-white/70 leading-relaxed text-justify">
+              Mobile welding and heavy-equipment roadside service in Rochester, NY providing on-site repairs, fabrication, and emergency support for trucks, trailers, and other equipment. Delivering dependable metal fabrication and emergency fixes when and where you need them throughout Rochester, NY and surrounding areas.
             </p>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
             <h3 className="text-white font-black uppercase tracking-tight mb-4 text-xl">
               Contact
@@ -53,7 +53,10 @@ export default function Footer() {
               Location
             </h3>
             <p className="text-white/70 leading-relaxed">
-              Rochester, NY by appointment only
+              Rochester, NY
+            </p>
+            <p className="text-white/60 text-sm mt-2">
+              Mobile service, by appointment only
             </p>
           </div>
 

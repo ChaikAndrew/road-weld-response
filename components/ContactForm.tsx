@@ -159,7 +159,7 @@ export default function ContactForm() {
               Contact Us
             </h2>
             <p className="text-xl text-white/80 font-semibold">
-              Get in touch for emergency service or to schedule maintenance
+              Get in touch for emergency service or to schedule maintenance in Rochester, NY
             </p>
           </div>
 
