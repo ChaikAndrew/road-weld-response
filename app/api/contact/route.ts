@@ -19,12 +19,12 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-      to: 'andreychaika87@gmail.com',
+      to: process.env.CONTACT_EMAIL || 'labidallc@gmail.com',
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">
-            New Contact Form Submission
+            New Contact Form Submission - Labida LLC
           </h2>
           <div style="background-color: #f9fafb; padding: 20px; margin: 20px 0; border-radius: 8px;">
             <p style="margin: 10px 0;"><strong>Name:</strong> ${name}</p>
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
             </p>
           </div>
           <p style="color: #666; font-size: 12px; margin-top: 20px;">
-            This email was sent from the Road Weld contact form.
+            This email was sent from the Labida LLC contact form.
           </p>
         </div>
       `,

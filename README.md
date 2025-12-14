@@ -39,13 +39,13 @@ To enable contact form email notifications:
 
 ```env
 RESEND_API_KEY=re_your_api_key_here
-CONTACT_EMAIL=andreychaika87@gmail.com
+CONTACT_EMAIL=labidallc@gmail.com
 RESEND_FROM_EMAIL=onboarding@resend.dev
 ```
 
-**Note:** The `CONTACT_EMAIL` defaults to `andreychaika87@gmail.com` if not set. The `RESEND_FROM_EMAIL` defaults to `onboarding@resend.dev` (Resend's test domain). For production, you should:
-- Get a verified domain in Resend
-- Set `RESEND_FROM_EMAIL` to an email from your verified domain (e.g., `noreply@yourdomain.com`)
+**Note:** The `CONTACT_EMAIL` defaults to `labidallc@gmail.com` if not set. The `RESEND_FROM_EMAIL` defaults to `onboarding@resend.dev` (Resend's test domain). For production, you should:
+- Get a verified domain in Resend (e.g., `labidallc.com`)
+- Set `RESEND_FROM_EMAIL` to an email from your verified domain (e.g., `noreply@labidallc.com`)
 
 4. For production, update the `from` email in `app/api/contact/route.ts` to use your verified domain
 
@@ -63,7 +63,7 @@ To configure environment variables on Vercel:
 2. Navigate to **Settings** → **Environment Variables**
 3. Add the following variables:
    - `RESEND_API_KEY` - Your Resend API key
-   - `CONTACT_EMAIL` - Email address to receive form submissions (defaults to `andreychaika87@gmail.com`)
+   - `CONTACT_EMAIL` - Email address to receive form submissions (defaults to `labidallc@gmail.com`)
    - `RESEND_FROM_EMAIL` - Sender email address (optional, defaults to `onboarding@resend.dev`)
 4. Select the environments where these variables should be available (Production, Preview, Development)
 5. Click **Save** and redeploy your project
