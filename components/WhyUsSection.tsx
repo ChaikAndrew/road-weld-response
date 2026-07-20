@@ -1,6 +1,7 @@
 "use client";
 
 import { useInView } from "@/hooks/useInView";
+import StarField from "@/components/StarField";
 
 /**
  * WhyUsSection Component
@@ -15,7 +16,7 @@ interface Benefit {
 const benefits: Benefit[] = [
   {
     title: "Fast Response Time",
-    description: "Average response time under 60 minutes. We understand downtime costs money.",
+    description: "Average response time under 90 minutes. We understand downtime costs money.",
   },
   {
     title: "Heavy Equipment Expertise",
@@ -44,8 +45,9 @@ export default function WhyUsSection() {
   const { ref: gridRef, isInView: gridInView } = useInView();
 
   return (
-    <section id="why-us" className="w-full bg-dark-gray py-20 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="why-us" className="relative w-full bg-black py-20 lg:py-32 overflow-hidden">
+      <StarField />
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div 
@@ -68,7 +70,7 @@ export default function WhyUsSection() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className={`flex items-start space-x-4 bg-black/50 p-6 border-l-4 border-warning-yellow scroll-reveal ${gridInView ? 'visible' : ''}`}
+                className={`flex items-start space-x-4 bg-dark-gray border border-white/10 p-6 border-l-4 border-l-warning-yellow scroll-reveal ${gridInView ? 'visible' : ''}`}
                 style={gridInView ? { ['--scroll-delay' as string]: `${(index % 6) * 0.1}s` } : {}}
               >
                 {/* Bullet Point */}

@@ -57,7 +57,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 py-12 md:py-20 lg:py-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white uppercase tracking-tight mb-4 md:mb-6 leading-tight">
             24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication

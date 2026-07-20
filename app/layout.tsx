@@ -3,6 +3,11 @@ import { Audiowide, Play } from "next/font/google";
 import "./globals.css";
 import FloatingCallButton from "@/components/FloatingCallButton";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import {
+  offeredServices,
+  serviceAreaCities,
+  serviceAreaCounties,
+} from "@/lib/seoContent";
 
 // Industrial, bold fonts for heavy-duty branding
 const audiowide = Audiowide({
@@ -76,14 +81,24 @@ const localBusinessSchema = {
     "latitude": 43.1566,
     "longitude": -77.6088
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "Rochester",
-    "containedIn": {
-      "@type": "State",
-      "name": "New York"
-    }
-  },
+  "areaServed": [
+    ...serviceAreaCounties.map((county) => ({
+      "@type": "AdministrativeArea",
+      "name": county,
+      "containedIn": {
+        "@type": "State",
+        "name": "New York",
+      },
+    })),
+    ...serviceAreaCities.map((city) => ({
+      "@type": "City",
+      "name": city,
+      "containedIn": {
+        "@type": "State",
+        "name": "New York",
+      },
+    })),
+  ],
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -103,16 +118,22 @@ const localBusinessSchema = {
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Welding Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Mobile Welding",
-          "description": "24/7 mobile welding services for broken frames, cracked components, and structural repairs on-site."
+    "itemListElement": offeredServices.map((service) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.name,
+        "description": service.description,
+        "areaServed": {
+          "@type": "State",
+          "name": "New York"
+        },
+        "provider": {
+          "@type": "HomeAndConstructionBusiness",
+          "name": "Labida LLC"
         }
       }
-    ]
+    }))
   }
 };
 

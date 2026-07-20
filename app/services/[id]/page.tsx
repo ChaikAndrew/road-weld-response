@@ -24,7 +24,7 @@ const serviceDetails: Record<string, ServiceDetail> = {
     features: [
       "24/7 emergency response",
       "Mobile welding units fully equipped",
-      "Qualified AWS welders",
+      "Qualified welders",
       "On-site structural repairs",
       "Frame and component welding",
       "Multiple welding processes (MIG, TIG, Stick)",

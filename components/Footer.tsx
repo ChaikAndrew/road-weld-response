@@ -92,6 +92,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/#about"
+                  className="text-white/70 hover:text-warning-yellow transition-colors duration-500 ease-in-out uppercase text-sm font-semibold"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#faq"
+                  className="text-white/70 hover:text-warning-yellow transition-colors duration-500 ease-in-out uppercase text-sm font-semibold"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/#contact"
                   className="text-white/70 hover:text-warning-yellow transition-colors duration-500 ease-in-out uppercase text-sm font-semibold"
                 >

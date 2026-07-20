@@ -69,10 +69,22 @@ export default function Header() {
               Services
             </Link>
             <Link
+              href="/#about"
+              className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
+            >
+              About
+            </Link>
+            <Link
               href="/#why-us"
               className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
             >
               Why Us
+            </Link>
+            <Link
+              href="/#faq"
+              className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
+            >
+              FAQ
             </Link>
             <Link
               href="/#contact"
@@ -136,11 +148,25 @@ export default function Header() {
                 Services
               </Link>
               <Link
+                href="/#about"
+                className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
                 href="/#why-us"
                 className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Why Us
+              </Link>
+              <Link
+                href="/#faq"
+                className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                FAQ
               </Link>
               <Link
                 href="/#contact"
