@@ -290,26 +290,26 @@ export default function TikTokSection() {
 
       {activeClip && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1.25rem,env(safe-area-inset-bottom))]"
           role="dialog"
           aria-modal="true"
           aria-label={activeClip.title}
           onClick={() => setActiveClip(null)}
         >
           <div
-            className="relative w-full max-w-[360px]"
+            className="relative w-full max-w-[min(360px,calc((100svh-8rem)*9/16))]"
             onClick={(event) => event.stopPropagation()}
           >
+            <ModalPlayer clip={activeClip} />
+
             <button
               type="button"
               onClick={() => setActiveClip(null)}
-              className="absolute -right-2 -top-12 z-20 flex h-10 w-10 items-center justify-center text-warning-yellow transition-opacity duration-300 hover:opacity-80"
+              className="absolute right-2 top-2 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-black/80 text-warning-yellow transition-opacity duration-300 hover:opacity-80"
               aria-label="Close video"
             >
               <X className="h-7 w-7" strokeWidth={2.5} />
             </button>
-
-            <ModalPlayer clip={activeClip} />
 
             <a
               href={activeClip.href}

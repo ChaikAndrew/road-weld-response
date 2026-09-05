@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Audiowide, Play } from "next/font/google";
 import "./globals.css";
 import FloatingCallButton from "@/components/FloatingCallButton";
@@ -22,6 +22,10 @@ const play = Play({
   weight: ["400", "700"],
   variable: "--font-play",
 });
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Labida LLC | 24/7 Mobile Welding, Heavy Equipment Service, and Metal Fabrication",
