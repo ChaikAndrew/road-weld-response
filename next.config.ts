@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Isolated prod builds can set NEXT_DIST_DIR without touching the running `.next` (dev).
+  distDir: process.env.NEXT_DIST_DIR || ".next",
+  images: {
+    qualities: [70, 75],
+  },
   async redirects() {
     return [
       {
@@ -12,6 +17,11 @@ const nextConfig: NextConfig = {
           },
         ],
         destination: 'https://www.labidallc.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/services/emergency-roadside-welding',
+        destination: '/services/emergency-mobile-welding',
         permanent: true,
       },
     ];

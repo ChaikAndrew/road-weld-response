@@ -12,18 +12,18 @@ export default function AboutSeoSection() {
   const { ref: contentRef, isInView: contentInView } = useInView();
 
   return (
-    <section id="about" className="w-full bg-dark-gray py-20 lg:py-32">
+    <section id="about" className="w-full bg-dark-gray py-10 lg:py-16">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div
             ref={headerRef}
-            className={`text-center mb-12 scroll-reveal ${headerInView ? "visible" : ""}`}
+            className={`text-center mb-6 scroll-reveal ${headerInView ? "visible" : ""}`}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
               Mobile Welding in Rochester, NY
             </h2>
             <p className="text-xl text-white/80 font-semibold">
-              24/7 roadside welding and heavy equipment service across Western NY
+              24/7 mobile welding and heavy equipment service across Western NY
             </p>
           </div>
 

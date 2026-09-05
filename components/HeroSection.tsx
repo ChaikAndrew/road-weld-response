@@ -43,9 +43,9 @@ export default function HeroSection() {
               src={image}
               alt={`Hero image ${index + 1}`}
               fill
-              className="object-cover object-[center_30%] md:object-center"
               priority={index === 0}
-              quality={90}
+              className="object-cover object-[center_30%] md:object-center"
+              quality={70}
               sizes="100vw"
               unoptimized
             />
@@ -60,7 +60,7 @@ export default function HeroSection() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white uppercase tracking-tight mb-4 md:mb-6 leading-tight">
-            24/7 Mobile Roadside Welding, Heavy Equipment Service, and Metal Fabrication
+            24/7 Mobile Welding, Heavy Equipment Service, and Metal Fabrication
           </h1>
 
           {/* Subtext */}

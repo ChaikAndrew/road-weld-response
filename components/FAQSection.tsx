@@ -15,18 +15,18 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="w-full bg-dark-gray py-20 lg:py-32">
+    <section id="faq" className="w-full bg-dark-gray py-10 lg:py-16">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div
             ref={headerRef}
-            className={`text-center mb-12 scroll-reveal ${headerInView ? "visible" : ""}`}
+            className={`text-center mb-6 scroll-reveal ${headerInView ? "visible" : ""}`}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-white/80 font-semibold">
-              Common questions about mobile welding and roadside repair in Rochester, NY
+              Common questions about mobile welding and on-site repair in Rochester, NY
             </p>
           </div>
 
@@ -47,7 +47,11 @@ export default function FAQSection() {
                     className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-black/30 transition-colors duration-300"
                     aria-expanded={isOpen}
                   >
-                    <h3 className="text-base md:text-lg font-black text-white uppercase tracking-tight leading-snug">
+                    <h3
+                      className={`text-base md:text-lg font-black uppercase tracking-tight leading-snug transition-colors duration-300 ${
+                        isOpen ? "text-warning-yellow" : "text-white"
+                      }`}
+                    >
                       {item.question}
                     </h3>
                     <ChevronDown

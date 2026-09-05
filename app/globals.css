@@ -13,6 +13,10 @@
   --font-heading: "Audiowide", var(--font-audiowide), sans-serif;
 }
 
+html {
+  scroll-padding-top: 3rem;
+}
+
 /* Base styles for industrial, heavy-duty design */
 body {
   background: var(--color-black);
@@ -178,4 +182,27 @@ button {
 
 .call-button-animate {
   animation: slowPulseShake 10s ease-in-out infinite;
+}
+
+/* Staggered page reveal (service detail, etc.) */
+.page-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  --reveal-delay: 0ms;
+  transition:
+    opacity 0.5s ease-in-out var(--reveal-delay),
+    transform 0.5s ease-in-out var(--reveal-delay);
+}
+
+.page-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

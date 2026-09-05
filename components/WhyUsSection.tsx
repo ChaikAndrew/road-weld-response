@@ -45,14 +45,14 @@ export default function WhyUsSection() {
   const { ref: gridRef, isInView: gridInView } = useInView();
 
   return (
-    <section id="why-us" className="relative w-full bg-black py-20 lg:py-32 overflow-hidden">
+    <section id="why-us" className="relative w-full bg-black py-10 lg:py-16 overflow-hidden">
       <StarField />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div 
             ref={headerRef}
-            className={`text-center mb-16 scroll-reveal ${headerInView ? 'visible' : ''}`}
+            className={`text-center mb-8 scroll-reveal ${headerInView ? 'visible' : ''}`}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
               Why Choose Us

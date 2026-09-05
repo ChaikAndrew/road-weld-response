@@ -1,12 +1,17 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import dynamic from "next/dynamic";
 import { useInView } from "@/hooks/useInView";
 import StarField from "@/components/StarField";
 
+const ContactMap = dynamic(() => import("@/components/ContactMap"), {
+  ssr: false,
+});
+
 /**
  * ContactForm Component
- * Contact form with validation (UI only, no backend integration)
+ * Contact form with validation and interactive location map
  */
 
 interface FormData {
@@ -26,6 +31,7 @@ interface FormErrors {
 export default function ContactForm() {
   const { ref: headerRef, isInView: headerInView } = useInView<HTMLDivElement>();
   const { ref: formRef, isInView: formInView } = useInView<HTMLFormElement>();
+  const { ref: mapRef, isInView: mapInView } = useInView<HTMLDivElement>();
   
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -146,138 +152,139 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="relative w-full bg-black py-20 lg:py-32 overflow-hidden">
+    <section id="contact" className="relative w-full bg-black py-10 lg:py-16 overflow-hidden">
       <StarField />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-2xl mx-auto">
-          {/* Section Header */}
-          <div 
-            ref={headerRef}
-            className={`text-center mb-12 scroll-reveal ${headerInView ? 'visible' : ''}`}
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
-              Contact Us
-            </h2>
-            <p className="text-xl text-white/80 font-semibold">
-              Get in touch for emergency service or to schedule maintenance in Rochester, NY
-            </p>
-          </div>
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header + Form */}
+          <div className="max-w-2xl mx-auto">
+            <div 
+              ref={headerRef}
+              className={`text-center mb-8 scroll-reveal ${headerInView ? 'visible' : ''}`}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
+                Contact Us
+              </h2>
+              <p className="text-xl text-white/80 font-semibold">
+                Get in touch for emergency service or to schedule maintenance in Rochester, NY
+              </p>
+            </div>
 
-          {/* Contact Form */}
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className={`bg-dark-gray p-8 border border-white/10 scroll-reveal ${formInView ? 'visible' : ''}`}
-          >
-            {/* Success Message */}
-            {isSubmitted && (
-              <div className="mb-6 p-4 bg-warning-yellow/20 border border-warning-yellow text-warning-yellow">
-                Thank you! Your message has been received. We'll contact you soon.
+            {/* Contact Form */}
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className={`bg-dark-gray p-8 border border-white/10 scroll-reveal ${formInView ? 'visible' : ''}`}
+            >
+              {/* Success Message */}
+              {isSubmitted && (
+                <div className="mb-6 p-4 bg-warning-yellow/20 border border-warning-yellow text-warning-yellow">
+                  Thank you! Your message has been received. We&apos;ll contact you soon.
+                </div>
+              )}
+
+              {/* Error Message */}
+              {submitError && (
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-500 text-red-400">
+                  {submitError}
+                </div>
+              )}
+
+              {/* Name Field */}
+              <div className="mb-6">
+                <label
+                  htmlFor="name"
+                  className="block text-white font-semibold uppercase tracking-wide mb-2"
+                >
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 bg-black border ${
+                    errors.name ? "border-warning-yellow" : "border-white/20"
+                  } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
+                  placeholder="Your full name"
+                />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-warning-yellow">{errors.name}</p>
+                )}
               </div>
-            )}
 
-            {/* Error Message */}
-            {submitError && (
-              <div className="mb-6 p-4 bg-red-500/20 border border-red-500 text-red-400">
-                {submitError}
+              {/* Phone Field */}
+              <div className="mb-6">
+                <label
+                  htmlFor="phone"
+                  className="block text-white font-semibold uppercase tracking-wide mb-2"
+                >
+                  Phone *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 bg-black border ${
+                    errors.phone ? "border-warning-yellow" : "border-white/20"
+                  } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
+                  placeholder="+1 (585) 315-7599"
+                />
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-warning-yellow">{errors.phone}</p>
+                )}
               </div>
-            )}
 
-            {/* Name Field */}
-            <div className="mb-6">
-              <label
-                htmlFor="name"
-                className="block text-white font-semibold uppercase tracking-wide mb-2"
-              >
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 bg-black border ${
-                  errors.name ? "border-warning-yellow" : "border-white/20"
-                } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
-                placeholder="Your full name"
-              />
-              {errors.name && (
-                <p className="mt-1 text-sm text-warning-yellow">{errors.name}</p>
-              )}
-            </div>
+              {/* Email Field */}
+              <div className="mb-6">
+                <label
+                  htmlFor="email"
+                  className="block text-white font-semibold uppercase tracking-wide mb-2"
+                >
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 bg-black border ${
+                    errors.email ? "border-warning-yellow" : "border-white/20"
+                  } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
+                  placeholder="your.email@example.com"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-warning-yellow">{errors.email}</p>
+                )}
+              </div>
 
-            {/* Phone Field */}
-            <div className="mb-6">
-              <label
-                htmlFor="phone"
-                className="block text-white font-semibold uppercase tracking-wide mb-2"
-              >
-                Phone *
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 bg-black border ${
-                  errors.phone ? "border-warning-yellow" : "border-white/20"
-                } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
-                placeholder="+1 (585) 315-7599"
-              />
-              {errors.phone && (
-                <p className="mt-1 text-sm text-warning-yellow">{errors.phone}</p>
-              )}
-            </div>
-
-            {/* Email Field */}
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="block text-white font-semibold uppercase tracking-wide mb-2"
-              >
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 bg-black border ${
-                  errors.email ? "border-warning-yellow" : "border-white/20"
-                } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out`}
-                placeholder="your.email@example.com"
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-warning-yellow">{errors.email}</p>
-              )}
-            </div>
-
-            {/* Message Field */}
-            <div className="mb-8">
-              <label
-                htmlFor="message"
-                className="block text-white font-semibold uppercase tracking-wide mb-2"
-              >
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className={`w-full px-4 py-3 bg-black border ${
-                  errors.message ? "border-warning-yellow" : "border-white/20"
-                } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out resize-none`}
-                placeholder="Describe your service needs..."
-              />
-              {errors.message && (
-                <p className="mt-1 text-sm text-warning-yellow">{errors.message}</p>
-              )}
-            </div>
+              {/* Message Field */}
+              <div className="mb-8">
+                <label
+                  htmlFor="message"
+                  className="block text-white font-semibold uppercase tracking-wide mb-2"
+                >
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className={`w-full px-4 py-3 bg-black border ${
+                    errors.message ? "border-warning-yellow" : "border-white/20"
+                  } text-white focus:outline-none focus:border-warning-yellow transition-colors duration-500 ease-in-out resize-none`}
+                  placeholder="Describe your service needs..."
+                />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-warning-yellow">{errors.message}</p>
+                )}
+              </div>
 
             {/* Submit Button */}
             <button
@@ -288,6 +295,15 @@ export default function ContactForm() {
               {isLoading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
+          </div>
+
+          {/* Map — no CSS transform on this wrapper (breaks MapLibre marker placement) */}
+          <div
+            ref={mapRef}
+            className={`mt-8 transition-opacity duration-700 ease-out ${mapInView ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <ContactMap />
+          </div>
         </div>
       </div>
     </section>

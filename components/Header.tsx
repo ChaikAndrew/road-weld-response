@@ -81,6 +81,12 @@ export default function Header() {
               Why Us
             </Link>
             <Link
+              href="/#work"
+              className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
+            >
+              Work
+            </Link>
+            <Link
               href="/#faq"
               className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
             >
@@ -160,6 +166,13 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Why Us
+              </Link>
+              <Link
+                href="/#work"
+                className="text-white font-semibold uppercase tracking-wide hover:text-warning-yellow transition-colors duration-500 ease-in-out"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Work
               </Link>
               <Link
                 href="/#faq"

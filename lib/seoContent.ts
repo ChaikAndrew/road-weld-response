@@ -1,4 +1,4 @@
-export const aboutSeoText = `Labida LLC is a professional mobile welding and metal fabrication company serving Rochester, NY and surrounding areas, including Henrietta, Greece, Webster, Victor, Waterloo, Finger Lakes, Batavia, Brockport, Irondequoit. We provide 24/7 emergency roadside welding, heavy equipment repair, fleet maintenance, trailer repair, truck welding, structural steel fabrication, dock repair, excavator bucket repair, and custom metal fabrication. Our fully equipped mobile welding units perform MIG, TIG, and stick welding on steel, aluminum, and stainless steel, handling frame cracks, chassis damage, trailer components, structural repairs, brackets, racks, railings and general repairs and modifications. Whether your truck, trailer, or heavy equipment breaks down on the road I-90, I-390, I-490 or at a job site, our experienced welders deliver fast, reliable on-site service to minimize downtime and keep your business moving.`;
+export const aboutSeoText = `Labida LLC is a professional mobile welding and metal fabrication company serving Rochester, NY and surrounding areas, including Henrietta, Greece, Webster, Victor, Waterloo, Finger Lakes, Batavia, Brockport, Irondequoit. We provide 24/7 emergency mobile welding, heavy equipment repair, fleet maintenance, trailer repair, truck welding, structural steel fabrication, dock repair, excavator bucket repair, and custom metal fabrication. Our fully equipped mobile welding units perform MIG, TIG, and stick welding on steel, aluminum, and stainless steel, handling frame cracks, chassis damage, trailer components, structural repairs, brackets, racks, railings and general repairs and modifications. Whether your truck, trailer, or heavy equipment needs repair at a job site, yard, or your business, our experienced welders deliver fast, reliable on-site service to minimize downtime and keep your business moving.`;
 
 export interface FAQItem {
   question: string;
@@ -9,7 +9,7 @@ export const faqItems: FAQItem[] = [
   {
     question: "Do you offer 24/7 emergency mobile welding in Rochester, NY?",
     answer:
-      "Yes. Labida LLC provides round-the-clock emergency roadside welding for trucks, trailers, and heavy equipment across Rochester, the Finger Lakes region, and surrounding Western NY counties. We are available nights, weekends, and holidays when breakdowns cannot wait for shop hours.",
+      "Yes. Labida LLC provides round-the-clock emergency mobile welding for trucks, trailers, and heavy equipment across Rochester, the Finger Lakes region, and surrounding Western NY counties. We are available nights, weekends, and holidays when breakdowns cannot wait for shop hours.",
   },
   {
     question: "What types of welding services do you provide on-site?",
@@ -29,12 +29,12 @@ export const faqItems: FAQItem[] = [
   {
     question: "What areas around Rochester do you cover?",
     answer:
-      "We serve Rochester, NY and the Finger Lakes region across Seneca, Cayuga, Genesee, Livingston, Monroe, Ontario, Orleans, Wayne, and Yates Counties. Key cities and communities include Rochester, Greece, Irondequoit, Webster, Brockport, Waterloo, and surrounding areas. We also respond to breakdowns along I-90, I-490, I-390, and nearby routes.",
+      "We serve Rochester, NY and the Finger Lakes region across Seneca, Cayuga, Genesee, Livingston, Monroe, Ontario, Orleans, Wayne, and Yates Counties. Key cities and communities include Rochester, Greece, Irondequoit, Webster, Brockport, Waterloo, and surrounding areas. We also respond to job sites, yards, and businesses throughout the region.",
   },
   {
-    question: "Can you repair a truck or trailer frame on the roadside?",
+    question: "Can you repair a truck or trailer frame on-site?",
     answer:
-      "In many cases, yes. We can perform on-site structural welding for cracked frames, crossmembers, and trailer damage when conditions and safety allow. For severe frame damage, we will advise whether a roadside repair or shop-level work is the safer option.",
+      "In many cases, yes. We can perform on-site structural welding for cracked frames, crossmembers, and trailer damage when conditions and safety allow. For severe frame damage, we will advise whether an on-site repair or shop-level work is the safer option.",
   },
   {
     question: "What custom metal fabrication services do you offer?",
@@ -49,7 +49,7 @@ export const faqItems: FAQItem[] = [
   {
     question: "Do I need to tow my truck to a shop for welding?",
     answer:
-      "Not always. Mobile welding eliminates towing costs and downtime for many frame, trailer, and equipment repairs. If the damage is too extensive for a safe roadside fix, we will tell you upfront and help you plan the next step.",
+      "Not always. Mobile welding eliminates towing costs and downtime for many frame, trailer, and equipment repairs. If the damage is too extensive for a safe on-site fix, we will tell you upfront and help you plan the next step.",
   },
   {
     question: "Can you repair heavy equipment on-site?",
@@ -90,29 +90,24 @@ export const serviceAreas = [...serviceAreaCities, ...serviceAreaCounties];
 
 export const offeredServices = [
   {
-    name: "Emergency Roadside Welding",
+    name: "Emergency Mobile Welding",
     description:
-      "24/7 mobile welding for broken frames, cracked components, and structural repairs on-site.",
+      "24/7 emergency mobile welding throughout Rochester, NY — mobile welding trucks come to you to get trucks, trailers, and equipment back in service fast.",
   },
   {
     name: "Heavy Equipment Repair",
     description:
-      "Expert repair for trucks, trailers, construction equipment, and commercial vehicles.",
+      "Professional repair for excavators, loaders, bulldozers, buckets, attachments, and other heavy machinery with mobile welding and custom fabrication.",
   },
   {
     name: "Fleet Maintenance",
     description:
-      "Comprehensive maintenance programs to keep your fleet operational and minimize downtime.",
+      "Comprehensive fleet maintenance and welding for trucking companies, contractors, municipalities, and commercial fleets across Rochester and surrounding communities.",
   },
   {
-    name: "Structural Fabrication",
+    name: "Metal Fabrication",
     description:
-      "Custom metal fabrication and welding for frames, brackets, and specialized equipment components.",
-  },
-  {
-    name: "24/7 Emergency Support",
-    description:
-      "Round-the-clock availability for critical breakdowns and urgent repair needs.",
+      "Custom steel and aluminum fabrication — brackets, racks, railings, trailer modifications, structural components, and one-of-a-kind parts built to your needs.",
   },
 ];
 

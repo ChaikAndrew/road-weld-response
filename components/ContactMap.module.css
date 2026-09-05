@@ -1,0 +1,332 @@
+.root {
+  width: 100%;
+}
+
+.frame {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  background: #0a0a0a;
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.frame:hover {
+  border-color: rgba(255, 193, 7, 0.55);
+  box-shadow: 0 0 28px rgba(255, 193, 7, 0.22);
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.mapReady {
+  opacity: 1;
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #0a0a0a;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.loaderHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loaderCog {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #ffc107;
+  animation: loaderSpin 1.4s linear infinite;
+}
+
+.loaderLabel {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loaderCog {
+    animation: none;
+  }
+
+  .map,
+  .loader {
+    transition: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .frame {
+    height: 520px;
+  }
+}
+
+/*
+ * Marker root is positioned by MapLibre via inline `transform`.
+ * Do not set transform, animation, or transition here — they pin the
+ * marker at the map's top-left (0,0) instead of the address.
+ */
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 36px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: none;
+  animation: none;
+}
+
+.markerPulse {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.35);
+  animation: markerPulse 3.2s ease-out infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.markerPin {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 28px;
+  height: 40px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+  transform-origin: bottom center;
+  animation: markerBob 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.marker:hover .markerPin,
+.marker:focus-visible .markerPin {
+  animation: none;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.marker:focus-visible {
+  outline: 2px solid #ffc107;
+  outline-offset: 4px;
+}
+
+.markerSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes markerBob {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes markerPulse {
+  0%,
+  55% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  60% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markerPin,
+  .markerPulse {
+    animation: none;
+  }
+}
+
+/* Meta below map */
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.addressLink {
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.5s ease-in-out;
+}
+
+.addressLink:hover {
+  color: #ffc107;
+}
+
+.note {
+  margin-top: 0.25rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
+
+.mapsButton {
+  display: inline-flex;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffc107;
+  transition: color 0.5s ease-in-out;
+}
+
+.mapsButton:hover {
+  color: rgba(255, 193, 7, 0.8);
+}
+
+@media (min-width: 640px) {
+  .meta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* MapLibre chrome — scoped via popup / control class hooks */
+.frame :global(.maplibregl-ctrl-group) {
+  overflow: hidden;
+  border: 1px solid rgba(255, 193, 7, 0.25);
+  background: #0a0a0a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.frame :global(.maplibregl-ctrl-group button) {
+  width: 32px;
+  height: 32px;
+  background-color: #0a0a0a;
+}
+
+.frame :global(.maplibregl-ctrl-group button + button) {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.frame :global(.maplibregl-ctrl-group button:hover) {
+  background-color: #1a1a1a;
+}
+
+.frame :global(.maplibregl-ctrl-icon) {
+  filter: invert(1) brightness(1.1);
+}
+
+.frame :global(.maplibregl-ctrl-attrib) {
+  background: rgba(10, 10, 10, 0.75);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 10px;
+}
+
+.frame :global(.maplibregl-ctrl-attrib a) {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.popup :global(.maplibregl-popup-content) {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+  font-family: inherit;
+}
+
+.popup :global(.maplibregl-popup-tip) {
+  border-top-color: #0a0a0a;
+  border-bottom-color: #0a0a0a;
+}
+
+.popup :global(.maplibregl-popup-close-button) {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  padding: 4px 8px;
+}
+
+.popup :global(.maplibregl-popup-close-button):hover {
+  color: #ffc107;
+  background: transparent;
+}
+
+.popupTitle {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffc107;
+}
+
+.popupAddress {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.popupButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 193, 7, 0.45);
+  background: #ffc107;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+.popupButton:hover {
+  background: rgba(255, 193, 7, 0.85);
+  border-color: #ffc107;
+}

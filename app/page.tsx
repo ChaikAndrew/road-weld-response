@@ -4,6 +4,7 @@ import ServicesSection from "@/components/ServicesSection";
 import AboutSeoSection from "@/components/AboutSeoSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import FAQSection from "@/components/FAQSection";
+import TikTokSection from "@/components/TikTokSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { buildFaqPageSchema } from "@/lib/seoContent";
@@ -11,7 +12,7 @@ import { buildFaqPageSchema } from "@/lib/seoContent";
 /**
  * Home Page
  * Main landing page for Labida LLC
- * Combines all sections: Header, Hero, Services, About, Why Us, FAQ, Contact, Footer
+ * Combines all sections: Header, Hero, Services, About, Why Us, Work, FAQ, Contact, Footer
  */
 export default function Home() {
   const faqSchema = buildFaqPageSchema();
@@ -27,6 +28,7 @@ export default function Home() {
       <ServicesSection />
       <AboutSeoSection />
       <WhyUsSection />
+      <TikTokSection />
       <FAQSection />
       <ContactForm />
       <Footer />

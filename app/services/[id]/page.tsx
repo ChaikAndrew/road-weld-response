@@ -1,370 +1,203 @@
 import Link from "next/link";
-import { ArrowLeft, Phone, Mail, MapPin } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  ArrowLeft,
+  Phone,
+  Mail,
+  MapPin,
+  Wrench,
+  Truck,
+  Settings,
+  Hammer,
+} from "lucide-react";
+import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StarField from "@/components/StarField";
+import PageReveal from "@/components/PageReveal";
+import { GOOGLE_MAPS_PLACE_URL, LABIDA_ADDRESS } from "@/lib/location";
 
 interface ServiceDetail {
   id: string;
   title: string;
-  icon: string;
-  shortDescription: string;
-  fullDescription: string;
-  features: string[];
-  benefits: string[];
-  useCases: string[];
+  icon: LucideIcon;
+  paragraphs: string[];
 }
 
 const serviceDetails: Record<string, ServiceDetail> = {
-  "emergency-roadside-welding": {
-    id: "emergency-roadside-welding",
-    title: "Emergency Roadside Welding",
-    icon: "Wrench",
-    shortDescription: "24/7 mobile welding services for broken frames, cracked components, and structural repairs on-site.",
-    fullDescription: "When equipment breaks down on the road, every minute counts. Our emergency roadside welding service provides immediate, professional mobile welding solutions to get you back on the road fast. Our qualified welders arrive fully equipped with mobile welding units capable of handling everything from minor frame cracks to major structural repairs.",
-    features: [
-      "24/7 emergency response",
-      "Mobile welding units fully equipped",
-      "Qualified welders",
-      "On-site structural repairs",
-      "Frame and component welding",
-      "Multiple welding processes (MIG, TIG, Stick)",
-    ],
-    benefits: [
-      "Minimize downtime and lost revenue",
-      "Get back on the road quickly",
-      "Professional quality repairs",
-      "No need to tow to a shop",
-      "Cost-effective emergency solutions",
-    ],
-    useCases: [
-      "Broken truck frames",
-      "Cracked trailer components",
-      "Failed structural welds",
-      "Emergency equipment repairs",
-      "On-site fabrication needs",
+  "emergency-mobile-welding": {
+    id: "emergency-mobile-welding",
+    title: "Emergency Mobile Welding",
+    icon: Wrench,
+    paragraphs: [
+      "Unexpected breakdowns can happen anytime, and when they do, Labida LLC is ready to help with 24/7 emergency mobile welding throughout Rochester, NY and the surrounding areas. Our fully equipped mobile welding trucks travel directly to your location, reducing downtime and getting your truck, trailer, or equipment safely back in service as quickly as possible.",
+      "We repair cracked frames, broken crossmembers, damaged trailer components, hitches, brackets, ramps, structural steel, aluminum parts, and other critical failures on semi-trucks, trailers, dump trucks, box trucks, heavy equipment, agricultural machinery, and commercial fleet vehicles. Our experienced welders perform professional MIG, TIG, and stick welding on steel, stainless steel, and aluminum to deliver durable, high-quality repairs where you need them most.",
+      "Whether your equipment needs repair at a job site, in a truck yard, or at your business, Labida LLC provides dependable mobile welding services with fast response times to help keep your operation moving.",
     ],
   },
   "heavy-equipment-repair": {
     id: "heavy-equipment-repair",
     title: "Heavy Equipment Repair",
-    icon: "Truck",
-    shortDescription: "Expert repair services for trucks, trailers, construction equipment, and commercial vehicles.",
-    fullDescription: "Our heavy equipment repair services cover the full spectrum of commercial and industrial vehicle maintenance. From semi-trucks and trailers to construction equipment and specialized commercial vehicles, our experienced technicians deliver reliable repairs that keep your operations running smoothly.",
-    features: [
-      "Truck and trailer repair",
-      "Construction equipment service",
-      "Commercial vehicle maintenance",
-      "Hydraulic system repairs",
-      "Engine and transmission work",
-      "Electrical system diagnostics",
-    ],
-    benefits: [
-      "Expert technicians with years of experience",
-      "Comprehensive repair capabilities",
-      "Reduced operational downtime",
-      "Extended equipment lifespan",
-      "Preventive maintenance programs",
-    ],
-    useCases: [
-      "Semi-truck breakdowns",
-      "Trailer repair and maintenance",
-      "Construction equipment failures",
-      "Commercial fleet repairs",
-      "Specialized vehicle service",
+    icon: Truck,
+    paragraphs: [
+      "Labida LLC provides professional heavy equipment repair for construction, industrial, agricultural, and commercial equipment throughout Rochester, NY. We repair excavators, skid steers, loaders, bulldozers, backhoes, buckets, attachments, trailers, and other heavy machinery using high-quality welding and custom fabrication techniques.",
+      "Our services include crack repairs, structural reinforcement, bucket rebuilding, attachment repairs, wear plate replacement, custom modifications, and equipment strengthening to extend the life of your machinery. We also fabricate and install custom tarp systems and trailer tarp supports, helping protect loads, improve safety, and keep equipment operating efficiently.",
+      "Whether you need emergency repairs or scheduled maintenance, our mobile welding team comes directly to your location with the equipment needed to complete reliable, long-lasting repairs and minimize downtime.",
     ],
   },
   "fleet-maintenance": {
     id: "fleet-maintenance",
     title: "Fleet Maintenance",
-    icon: "Settings",
-    shortDescription: "Comprehensive maintenance programs to keep your fleet operational and minimize downtime.",
-    fullDescription: "Preventive maintenance is the key to fleet reliability. Our comprehensive fleet maintenance programs are designed to keep your vehicles operational, minimize unexpected breakdowns, and extend the lifespan of your equipment. We work with you to create customized maintenance schedules that fit your operational needs.",
-    features: [
-      "Customized maintenance schedules",
-      "Regular inspection programs",
-      "Preventive maintenance",
-      "Fleet-wide service coordination",
-      "Maintenance tracking and reporting",
-      "Priority service for fleet customers",
-    ],
-    benefits: [
-      "Reduced unexpected breakdowns",
-      "Extended equipment lifespan",
-      "Lower overall maintenance costs",
-      "Improved fleet reliability",
-      "Better resale value",
-    ],
-    useCases: [
-      "Commercial truck fleets",
-      "Trailer maintenance programs",
-      "Construction equipment fleets",
-      "Delivery vehicle maintenance",
-      "Long-term service contracts",
+    icon: Settings,
+    paragraphs: [
+      "Keeping your fleet running requires dependable maintenance and fast repairs. Labida LLC provides comprehensive fleet maintenance and welding services for trucking companies, contractors, municipalities, delivery fleets, utility companies, and commercial businesses throughout Rochester and the surrounding communities.",
+      "We inspect, repair, reinforce, and fabricate components for semi-trucks, trailers, dump trucks, box trucks, utility vehicles, and service trucks. Our fleet services include frame repairs, trailer maintenance, welding, structural repairs, aluminum welding, equipment modifications, preventive maintenance, and emergency on-site support.",
+      "By identifying and repairing problems before they become major failures, we help reduce downtime, improve safety, extend equipment life, and keep your fleet operating at peak performance.",
     ],
   },
-  "structural-fabrication": {
-    id: "structural-fabrication",
-    title: "Structural Fabrication",
-    icon: "Nut",
-    shortDescription: "Custom metal fabrication and welding for frames, brackets, and specialized equipment components.",
-    fullDescription: "When standard parts won't do, our structural fabrication services create custom solutions tailored to your specific needs. From custom frames and brackets to specialized equipment components, our skilled fabricators use precision welding and metalworking techniques to deliver durable, reliable custom parts.",
-    features: [
-      "Custom frame fabrication",
-      "Specialized bracket design",
-      "Precision metal cutting",
-      "Custom component manufacturing",
-      "CAD design capabilities",
-      "Quality welding and finishing",
-    ],
-    benefits: [
-      "Solutions tailored to your needs",
-      "High-quality custom fabrication",
-      "Durable and reliable parts",
-      "Expert design consultation",
-      "One-stop fabrication service",
-    ],
-    useCases: [
-      "Custom truck frames",
-      "Specialized brackets",
-      "Equipment modifications",
-      "Unique component needs",
-      "Prototype development",
-    ],
-  },
-  "24-7-emergency-support": {
-    id: "24-7-emergency-support",
-    title: "24/7 Emergency Support",
-    icon: "AlertCircle",
-    shortDescription: "Round-the-clock availability for critical breakdowns and urgent repair needs.",
-    fullDescription: "Equipment failures don't happen on a schedule. That's why we provide 24/7 emergency support for critical breakdowns and urgent repair needs. Our emergency response team is always ready to dispatch to your location, day or night, weekends and holidays included. When you need help most, we're there.",
-    features: [
-      "24/7 availability",
-      "Holiday and weekend service",
-      "Emergency dispatch system",
-      "Rapid response guarantee",
-      "Priority emergency service",
-      "Round-the-clock support line",
-    ],
-    benefits: [
-      "Peace of mind",
-      "No downtime waiting",
-      "Immediate assistance",
-      "Reliable emergency support",
-      "Minimized operational impact",
-    ],
-    useCases: [
-      "After-hours breakdowns",
-      "Weekend emergencies",
-      "Holiday service needs",
-      "Critical equipment failures",
-      "Urgent repair requirements",
+  "metal-fabrication": {
+    id: "metal-fabrication",
+    title: "Metal Fabrication",
+    icon: Hammer,
+    paragraphs: [
+      "Labida LLC specializes in custom metal fabrication for commercial, industrial, transportation, and construction industries. We design, build, modify, and repair steel and aluminum components that are built to meet your exact needs.",
+      "Our fabrication services include custom brackets, equipment supports, trailer modifications, truck accessories, racks, platforms, stairs, railings, gates, structural components, machine guards, repair panels, reinforcement plates, and one-of-a-kind fabricated parts. Whether you need a single custom piece or a complete fabrication project, we combine precision craftsmanship with durable materials to produce reliable, long-lasting results.",
+      "From concept to installation, Labida LLC delivers high-quality metal fabrication solutions that improve functionality, increase durability, and keep your equipment and facilities working safely and efficiently.",
     ],
   },
 };
 
-export default function ServiceDetailPage({
+export function generateStaticParams() {
+  return Object.keys(serviceDetails).map((id) => ({ id }));
+}
+
+const blockClass = "bg-dark-gray border border-white/10 p-6";
+
+function InfoBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={blockClass}>
+      <h2 className="text-xl font-black text-white uppercase tracking-tight mb-4">
+        {title}
+      </h2>
+      {children}
+    </div>
+  );
+}
+
+function CompactContact() {
+  return (
+    <div className={blockClass}>
+      <h2 className="text-xl font-black text-white uppercase tracking-tight mb-2">
+        Need this service?
+      </h2>
+      <p className="text-white/70 text-sm mb-5">
+        Call or message us — we&apos;ll get you a quote and dispatch ASAP.
+      </p>
+
+      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 mb-5 text-sm">
+        <a
+          href="tel:+15853157599"
+          className="inline-flex items-center gap-2 text-warning-yellow hover:text-warning-yellow/80 transition-colors font-semibold"
+        >
+          <Phone className="w-4 h-4 shrink-0" strokeWidth={2} />
+          +1 (585) 315-7599
+        </a>
+        <a
+          href="mailto:labidallc@gmail.com"
+          className="inline-flex items-center gap-2 text-warning-yellow hover:text-warning-yellow/80 transition-colors font-semibold"
+        >
+          <Mail className="w-4 h-4 shrink-0" strokeWidth={2} />
+          labidallc@gmail.com
+        </a>
+        <a
+          href={GOOGLE_MAPS_PLACE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-white/80 hover:text-warning-yellow transition-colors"
+        >
+          <MapPin className="w-4 h-4 shrink-0 text-warning-yellow" strokeWidth={2} />
+          {LABIDA_ADDRESS}
+        </a>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <a
+          href="tel:+15853157599"
+          className="bg-warning-yellow text-black px-6 py-3 text-sm font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors text-center"
+        >
+          Call Now
+        </a>
+        <Link
+          href="/#contact"
+          className="border border-warning-yellow text-warning-yellow px-6 py-3 text-sm font-black uppercase tracking-wider hover:bg-warning-yellow hover:text-black transition-colors text-center"
+        >
+          Contact Form
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+export default async function ServiceDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const service = serviceDetails[params.id];
+  const { id } = await params;
+  const service = serviceDetails[id];
 
   if (!service) {
-    return (
-      <main className="min-h-screen bg-black">
-        <Header />
-        <section className="w-full bg-black py-20 lg:py-32">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mx-auto">
-              {/* Back Button */}
-              <Link
-                href="/#services"
-                className="inline-flex items-center gap-2 text-white/80 hover:text-warning-yellow transition-colors mb-8"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                <span>Back to Services</span>
-              </Link>
-
-              {/* Contact Information Card */}
-              <div className="bg-dark-gray border border-white/10 p-8 lg:p-12">
-                <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-8 text-center">
-                  Contact Us
-                </h2>
-                
-                <div className="space-y-6 mb-8">
-                  {/* Phone */}
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-warning-yellow flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-black" strokeWidth={2} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">
-                        Phone
-                      </h3>
-                      <a
-                        href="tel:+15853157599"
-                        className="text-xl text-warning-yellow hover:text-warning-yellow/80 transition-colors font-semibold"
-                      >
-                        +1 (585) 315-7599
-                      </a>
-                      <p className="text-white/70 mt-1">Available 24/7 for emergency service</p>
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-warning-yellow flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-black" strokeWidth={2} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">
-                        Email
-                      </h3>
-                      <a
-                        href="mailto:labidallc@gmail.com"
-                        className="text-xl text-warning-yellow hover:text-warning-yellow/80 transition-colors font-semibold"
-                      >
-                        labidallc@gmail.com
-                      </a>
-                      <p className="text-white/70 mt-1">Send us a message anytime</p>
-                    </div>
-                  </div>
-
-                  {/* Location */}
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-warning-yellow flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-black" strokeWidth={2} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">
-                        Location
-                      </h3>
-                      <p className="text-xl text-white font-semibold">
-                        Rochester, NY
-                      </p>
-                      <p className="text-white/70 mt-1">By appointment only</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="tel:+15853157599"
-                    className="bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors duration-500 ease-in-out text-center"
-                  >
-                    Call Now
-                  </a>
-                  <Link
-                    href="/#contact"
-                    className="bg-transparent border-2 border-warning-yellow text-warning-yellow px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow hover:text-black transition-colors duration-500 ease-in-out text-center"
-                  >
-                    Contact Form
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <Footer />
-      </main>
-    );
+    notFound();
   }
+
+  const IconComponent = service.icon;
 
   return (
     <main className="min-h-screen bg-black">
       <Header />
-      <section className="w-full bg-black py-20 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          {/* Back Button */}
+      <section className="relative w-full bg-black pt-6 pb-16 lg:pt-8 lg:pb-20 overflow-hidden">
+        <StarField />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <Link
             href="/#services"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-warning-yellow transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-warning-yellow transition-colors mb-6"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Services</span>
           </Link>
 
-          <div className="max-w-4xl mx-auto">
-            {/* Service Header */}
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <PageReveal
+              delayMs={0}
+              className="flex flex-col sm:flex-row sm:items-center gap-4"
+            >
+              <div className="text-warning-yellow shrink-0">
+                <IconComponent className="w-12 h-12" />
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
                 {service.title}
               </h1>
-              <p className="text-xl text-white/80 leading-relaxed">
-                {service.fullDescription}
-              </p>
-            </div>
+            </PageReveal>
 
-            {/* Features Section */}
-            <div className="mb-12">
-              <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-6">
-                Key Features
-              </h2>
-              <ul className="space-y-3">
-                {service.features.map((feature, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-3 text-white/90"
-                  >
-                    <span className="text-warning-yellow mt-1">•</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <PageReveal delayMs={100}>
+              <InfoBlock title="Overview">
+                <div className="space-y-4 text-white/80 leading-relaxed">
+                  {service.paragraphs.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </InfoBlock>
+            </PageReveal>
 
-            {/* Benefits Section */}
-            <div className="mb-12">
-              <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-6">
-                Benefits
-              </h2>
-              <ul className="space-y-3">
-                {service.benefits.map((benefit, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-3 text-white/90"
-                  >
-                    <span className="text-warning-yellow mt-1">•</span>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Use Cases Section */}
-            <div className="mb-12">
-              <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-6">
-                Common Use Cases
-              </h2>
-              <ul className="space-y-3">
-                {service.useCases.map((useCase, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-3 text-white/90"
-                  >
-                    <span className="text-warning-yellow mt-1">•</span>
-                    <span>{useCase}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* CTA Section */}
-            <div className="bg-dark-gray border border-white/10 p-8 mt-12">
-              <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
-                Ready to Get Started?
-              </h2>
-              <p className="text-white/80 mb-6">
-                Contact us today to discuss your needs and get a quote for our services.
-              </p>
-              <Link
-                href="/#contact"
-                className="inline-block bg-warning-yellow text-black px-8 py-4 text-lg font-black uppercase tracking-wider hover:bg-warning-yellow/80 transition-colors"
-              >
-                Contact Us
-              </Link>
-            </div>
+            <PageReveal delayMs={200}>
+              <CompactContact />
+            </PageReveal>
           </div>
         </div>
       </section>
@@ -372,4 +205,3 @@ export default function ServiceDetailPage({
     </main>
   );
 }
-
